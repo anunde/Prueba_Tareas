@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use App\Entity\User;
 use App\Form\RegisterType;
@@ -37,11 +38,22 @@ class UserController extends AbstractController
     		$em->persist($user);
     		$em->flush();
 
-    		return $this->redirectToRoute('index');
+    		return $this->redirectToRoute('login');
     	}
 
         return $this->render('user/register.html.twig', [
         	'form' => $form->createView()
         ]);
+    }
+
+    public function login(AuthenticationUtils $authenticationUtils) {
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('user/login.html.twig', array(
+            'error' => $error,
+            'last_username' => $lastUsername
+        ));
     }
 }

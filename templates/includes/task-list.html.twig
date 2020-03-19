@@ -1,0 +1,27 @@
+      {% if tasks|length >= 1 %}
+   	<table>
+   		<tr>
+   			<th>Tarea</th>
+   			<th>Prioridad</th>
+   			<th>Horas presupuestadas</th>			
+   		</tr>
+
+   		{% for task in tasks %}
+         {% set color = include('includes/colorPriority.html.twig') %}
+   		<tr>
+   			<td class="{{ color }}">{{ task.title }}</td>
+   			<td class="{{ color }}">{{ task.priority }}</td>
+   			<td class="{{ color }}">{{ task.hours }}</td>
+   			<td class="buttons">
+   				<a href="{{ path('detail', {'id':task.id}) }}">Ver</a>
+               {% if app.user != null and task.user.id == app.user.id %}
+   				<a href="{{ path('edit', {'id':task.id}) }}" class="btn-edit">Editar</a>
+   				<a href="{{ path('delete', {'id':task.id}) }}" class="btn-delete">Borrar</a>
+               {% endif %}
+   			</td>
+   		</tr>
+   		{% endfor %}
+   	</table>
+      {% else %}
+         <h2>"Todavía no has creado ninguna tarea"</h2>
+      {% endif %}

@@ -1,0 +1,8 @@
+{% if task.priority == 'alta' %}
+   	{{ 'high_priority' }}
+{% elseif task.priority == 'media' %}
+   	{{ 'medium_priority' }}
+{% elseif task.priority == 'baja' %}
+   	{{ 'low_priority' }}
+{% endif %}
+

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarea {{ task.id }}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h2>{{ task.title }}</h2>
+    {% set color = include('includes/colorPriority.html.twig') %}
+    <p class="data_task">{{ task.user.name ~ ' ' ~ task.user.surname ~ ' | ' ~ task.createdAt|date('d/m/Y h:i') }}</p>
+    <p class="details_task">Prioridad: <span class="{{color}}">{{ task.priority }}</span> Horas presupuestadas: {{ task.hours }}h</p>
+    <p class="content_task">{{ task.content }}</p>
+
+</div>
+{% endblock %}

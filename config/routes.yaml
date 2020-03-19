@@ -1,7 +1,34 @@
 tasks:
-    path: /
+    path: /tareas
     controller: App\Controller\TaskController::index
+
+detail:
+    path: /tarea/{id}
+    controller: App\Controller\TaskController::detail
+
+creation:
+    path: /crear
+    controller: App\Controller\TaskController::creation
+
+my_tasks:
+    path: /mis-tareas
+    controller: App\Controller\TaskController::myTasks
+
+edit:
+    path: /editar/{id}
+    controller: App\Controller\TaskController::edit
+
+delete:
+    path: /eliminar/{id}
+    controller: App\Controller\TaskController::delete
 
 register:
     path: /registro
     controller: App\Controller\UserController::register
+
+login:
+    path: /
+    controller: App\Controller\UserController::login
+
+logout:
+    path: /logout

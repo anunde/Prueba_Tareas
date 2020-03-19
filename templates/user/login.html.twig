@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h2>Inicio de sesión</h2>
+
+    {% if error %}
+    	<div class=alert alert-error>
+    		{{ error.messagekey|trans(error.messageData, 'security') }}
+    	</div>
+    {% endif %}
+    
+    <form action="{{ path('login') }}" method="POST">
+    	<label for="username">Email</label>
+    	<input type="text" id="username" name="_username" value="{{ last_username }}">
+
+    	<label for="password">Contraseña</label>
+    	<input type="password" id="password" name="_password">
+
+    	<div class="clearfix"></div>
+
+    	<input type="submit" value="Entrar">
+    </form>
+</div>
+{% endblock %}

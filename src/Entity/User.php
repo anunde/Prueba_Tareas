@@ -47,6 +47,8 @@ class User implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="surname", type="string", length=200, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-z ]+/")
      */
     private $surname;
 
@@ -56,6 +58,9 @@ class User implements UserInterface
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      * @Assert\NotBlank
      * @Assert\Regex("/[a-zA-z ]+/")
+     * @Assert\Email(
+     *      message = "El email '{{ value }}' no es válido"
+     * )
      */
     private $email;
 
@@ -64,8 +69,9 @@ class User implements UserInterface
      *
      * @ORM\Column(name="password", type="string", length=255, nullable=true)
      * @Assert\NotBlank
-     * @Assert\Email(
-     *      message = "El email '{{ value }}' no es válido"
+     * @Assert\Length(
+     *      min = 8,
+     *      minMessage = "La contraseña debe contener al menos {{ limit }} caracteres"
      * )
      */
     private $password;
@@ -74,11 +80,6 @@ class User implements UserInterface
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *      min = 8,
-     *      minMessage = "La contraseña debe contener al menos {{ limit }} caracteres"
-     * )
      */
     private $createdAt;
 

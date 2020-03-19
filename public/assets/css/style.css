@@ -4,11 +4,17 @@
 	box-sizing: border-box;
 }
 
+.clearfix {
+	float: none;
+	clear: both;
+}
+
 body {
 	background-color: white;
 }
 
 h2 {
+	margin-top: 50px;
 	color: #888;
 }
 
@@ -66,6 +72,8 @@ h2 {
 	color: #47AC53;
 }
 
+/* FORMULARIO */
+
 label {
 	display: block;
 	width: 80%;
@@ -74,20 +82,28 @@ label {
 	color: #444;
 }
 
+textarea {
+	height: 200px;
+}
+
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+textarea,
+select {
 	width: 70%;
 	padding: 8px;
 	margin: 0 auto;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	color: #999;
+	background-color: white;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
-input[type="email"]:focus {
+input[type="email"]:focus,
+textarea:focus {
 	border: 1px solid #47AC53;
 	box-shadow: 0 0 3px #47AC53;
 	border-radius: 5px;
@@ -109,4 +125,85 @@ input[type="submit"] {
 button:hover,
 input[type="submit"]:hover {
 	box-shadow: 0 0 5px #47AC53;
+}
+
+/* TABLA */
+table {
+	width: 100%;
+	margin-top: 40px;
+	border: none;
+	text-align: center;
+}
+
+table th,
+table td{
+	background-color: #f6f6f6;
+	padding: 15px;
+	padding-right: 25px;
+	padding-left: 25px;
+}
+
+table td {
+	background-color: #e9ffea;
+}
+
+.high_priority {
+	background-color: #F5A9A9;
+}
+
+.medium_priority {
+	background-color: #F5DA81;
+}
+
+.low_priority {
+	background-color: #e9ffea;
+}
+
+.buttons a {
+	text-decoration: none;
+	border: 1px solid green;
+	padding: 10px;
+	color: white;
+	border-radius: 3px;
+	background-color: #47AC53;
+}
+
+.buttons {
+	width: 32%;
+	text-align: left;
+}
+
+.buttons .btn-edit {
+	background-color: #F1A219;
+	border: 1px solid #9B6609;
+}
+
+.buttons .btn-delete {
+	background-color: #DE3131;
+	border: 1px solid #841414;
+}
+
+/* DETALLE TAREA */
+
+.data_task {
+	margin-top: 30px;
+	font-size: 15px;
+	color: gray;
+}
+
+.details_task {
+	font-size: 25px;
+	color: #444;
+}
+
+.details_task span {
+	text-transform: capitalize;
+	padding: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.content_task {
+	margin-top: 50px;
+	font-size: 20px;
 }

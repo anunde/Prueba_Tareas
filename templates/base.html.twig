@@ -12,10 +12,16 @@
     	<div id="header">
     		<h1>Taeras Symfony</h1> 
     		<ul>
-    			<li><a href="{{ path('tasks') }}">Inicio</a></li>
-    			<li><a href="">Mis tareas</a></li>
-    			<li><a href="">Iniciar sesión</a></li>
+                {% if app.user %}
+                <li><a href="{{ path('tasks') }}">Inicio</a></li>
+    			<li><a href="{{ path('my_tasks') }}">Mis tareas</a></li>
+                <li><a href="{{ path('creation') }}">Crear tarea</a></li>
+                <li><a href="">{{ app.user.name }}</a></li>
+                <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
+                {% else %}
+    			<li><a href="{{ path('login') }}">Iniciar sesión</a></li>
     			<li><a href="{{ path('register') }}">Registrarse</a></li>
+                {% endif %}
     		</ul>
     	</div>
     	{% endblock %}
